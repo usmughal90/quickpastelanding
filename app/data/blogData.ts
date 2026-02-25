@@ -1,0 +1,178 @@
+export interface BlogPost {
+    id: number;
+    date: string;
+    title: string;
+    description: string;
+    imageUrl?: string;
+}
+
+export const blogPosts: BlogPost[] = [
+    {
+        id: 1,
+        date: "MAY 26, 2025",
+        title: "Improving your workflow with collaborative clipboard",
+        description: "How teams, creators, and friends use Shared Pinboards to stay organized and work better together in Paste.",
+        imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 2,
+        date: "APR 22, 2024",
+        title: "Copy & paste across Apple devices",
+        description: "Master copying and pasting across Apple devices with Universal Clipboard, and elevate your clipboard experience to an advanced level with Paste.",
+        imageUrl: "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 3,
+        date: "MAR 12, 2024",
+        title: "Beyond copy and paste: the legacy of Xerox and Apple",
+        description: "Uncover the history of the clipboard, starting with Xerox and refined by Apple, now perfected by Paste.",
+        imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 4,
+        date: "FEB 7, 2024",
+        title: "Web design journey at Paste",
+        description: "Dive into our journey, overcoming challenges and bringing our creative visions to life with the perfect set of tools.",
+        imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 5,
+        date: "JAN 15, 2024",
+        title: "Maximizing Productivity with Clipboard History",
+        description: "Learn how to effectively use clipboard history to save time and reduce repetitive tasks in your daily workflow.",
+        imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 6,
+        date: "DEC 10, 2023",
+        title: " The Ultimate Guide to Mac Shortcuts",
+        description: "A comprehensive guide to the most essential Mac shortcuts that every power user should know.",
+        imageUrl: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 7,
+        date: "NOV 28, 2023",
+        title: "Design Systems 101",
+        description: "Understanding the basics of design systems and how they help maintain consistency across large projects.",
+        imageUrl: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 8,
+        date: "OCT 05, 2023",
+        title: "Remote Work Essentials",
+        description: "Top software and hardware tools that make remote work seamless and productive for teams of all sizes.",
+        imageUrl: "https://images.unsplash.com/photo-1593642632823-8f78536788c6?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 9,
+        date: "SEP 19, 2023",
+        title: "The Future of Copy-Paste",
+        description: "Exploring upcoming technologies and features that could revolutionize how we transfer data between devices.",
+        imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 10,
+        date: "AUG 14, 2023",
+        title: "Collaboration in the Digital Age",
+        description: "Strategies for effective digital collaboration and how tools like Paste can bridge the gap.",
+        imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 11,
+        date: "JUL 30, 2023",
+        title: "Organizing Digital Clutter",
+        description: "Tips and tricks for keeping your digital workspace clean, organized, and efficient.",
+        imageUrl: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 12,
+        date: "JUL 01, 2023",
+        title: "Why Text snippets matter",
+        description: "How using text snippets can speed up your coding and writing process significantly.",
+        imageUrl: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 13,
+        date: "JUN 15, 2023",
+        title: "Minimalist Desk Setups",
+        description: "Inspiration for creating a minimalist desk setup that minimizes distractions and maximizes focus.",
+        imageUrl: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 14,
+        date: "MAY 20, 2023",
+        title: "Accessibility in Web Design",
+        description: "Why accessibility is crucial for modern web applications and how to implement it correctly.",
+        imageUrl: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 15,
+        date: "APR 10, 2023",
+        title: "Color Theory for Developers",
+        description: "A primer on color theory and how to choose the right color palettes for your applications.",
+        imageUrl: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 16,
+        date: "MAR 25, 2023",
+        title: "VS Code Extensions You Need",
+        description: "A curated list of VS Code extensions that will boost your productivity as a developer.",
+        imageUrl: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 17,
+        date: "FEB 18, 2023",
+        title: "Mastering Git",
+        description: "Advanced Git commands and workflows to help you manage your code versioning like a pro.",
+        imageUrl: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 18,
+        date: "JAN 05, 2023",
+        title: "React Server Components",
+        description: "An introduction to React Server Components and how they are changing the way we build React apps.",
+        imageUrl: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 19,
+        date: "DEC 12, 2022",
+        title: "Typography in UI",
+        description: "The importance of typography in user interface design and how to select good typefaces.",
+        imageUrl: "https://images.unsplash.com/photo-1563694983011-6f4d90358083?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 20,
+        date: "NOV 01, 2022",
+        title: "Dark Mode Best Practices",
+        description: "Key considerations when designing and implementing dark mode for your web applications.",
+        imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 21,
+        date: "OCT 15, 2022",
+        title: "Frontend Testing Strategies",
+        description: "Overview of modern frontend testing strategies, including unit, integration, and e2e tests.",
+        imageUrl: "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 22,
+        date: "SEP 05, 2022",
+        title: "Optimizing Web Performance",
+        description: "Techniques to improve the loading speed and performance of your websites.",
+        imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 23,
+        date: "AUG 20, 2022",
+        title: "State Management in 2023",
+        description: "A look at the current state of state management libraries and patterns in the React ecosystem.",
+        imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+        id: 24,
+        date: "JUL 10, 2022",
+        title: "CSS Grid vs Flexbox",
+        description: "When to use CSS Grid vs Flexbox: A comprehensive guide with examples.",
+        imageUrl: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&w=800&q=80",
+    },
+];

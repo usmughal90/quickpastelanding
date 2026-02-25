@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Light theme */
+  --background: #ffffff;
+  --foreground: #000000;
+  --primary: #0766ad;
+  --secondary:#f6f9ff;
+  /* --secondary:#ddeefc; */
+}
+
+.dark {
+  /* Dark theme - exact colors from original design */
+  --background: #111827;
+  /* Keeping primary for dark mode consistent or distinct if needed, using same for now or relying on defaults if not used */
+  --primary: #0766ad;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-montserrat);
+  --font-heading: var(--font-poppins);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+ html {
+  scroll-behavior: smooth;
+}
+
+@keyframes premium-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-premium-float {
+  animation: premium-float 5s ease-in-out infinite;
+}
+
+.dark ::placeholder{
+  color: white;
+}

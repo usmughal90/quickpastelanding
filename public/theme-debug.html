@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .step {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .danger {
+            background: #dc3545;
+        }
+        .danger:hover {
+            background: #c82333;
+        }
+        .info {
+            background: #e7f3ff;
+            border-left-color: #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Theme Toggle Debugging Guide</h1>
+    
+    <div class="info">
+        <strong>⚠️ Important:</strong> Follow these steps in order to fix the theme toggle issue.
+    </div>
+
+    <div class="step">
+        <h3>Step 1: Clear Browser Cache & localStorage</h3>
+        <p>Click this button to clear the theme from localStorage:</p>
+        <button class="danger" onclick="clearTheme()">Clear Theme Data</button>
+        <p id="clearStatus"></p>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Hard Refresh the Page</h3>
+        <p>After clearing, do a hard refresh:</p>
+        <ul>
+            <li><strong>Windows/Linux:</strong> Press <code>Ctrl + Shift + R</code></li>
+            <li><strong>Mac:</strong> Press <code>Cmd + Shift + R</code></li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Open Your App</h3>
+        <p>Navigate to your app:</p>
+        <button onclick="window.open('http://localhost:3000', '_blank')">Open App (localhost:3000)</button>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Test the Theme Toggle</h3>
+        <ol>
+            <li>The page should load in <strong>light theme</strong> (white background)</li>
+            <li>Click the theme toggle button in the navbar (Sun/Moon icon)</li>
+            <li>The page should switch to <strong>dark theme</strong> (dark background)</li>
+            <li>Refresh the page - it should <strong>stay in dark theme</strong></li>
+            <li>Click the toggle again - it should switch back to <strong>light theme</strong></li>
+            <li>Refresh the page - it should <strong>stay in light theme</strong></li>
+        </ol>
+    </div>
+
+    <div class="step">
+        <h3>Step 5: Check Browser Console (If Still Not Working)</h3>
+        <p>Open browser console:</p>
+        <ul>
+            <li>Press <code>F12</code> or <code>Ctrl + Shift + I</code> (Windows/Linux)</li>
+            <li>Press <code>Cmd + Option + I</code> (Mac)</li>
+        </ul>
+        <p>Look for any error messages and report them.</p>
+    </div>
+
+    <div class="info">
+        <h3>🔍 Manual localStorage Check</h3>
+        <p>Current theme in localStorage: <strong id="currentTheme">Not set</strong></p>
+        <button onclick="checkTheme()">Check Current Theme</button>
+        <button onclick="setLight()">Set to Light</button>
+        <button onclick="setDark()">Set to Dark</button>
+    </div>
+
+    <script>
+        function clearTheme() {
+            localStorage.removeItem('theme');
+            document.getElementById('clearStatus').innerHTML = '✅ Theme data cleared! Now do a hard refresh.';
+            document.getElementById('clearStatus').style.color = 'green';
+            checkTheme();
+        }
+
+        function checkTheme() {
+            const theme = localStorage.getItem('theme');
+            document.getElementById('currentTheme').textContent = theme || 'Not set (will default to light)';
+        }
+
+        function setLight() {
+            localStorage.setItem('theme', 'light');
+            alert('Theme set to LIGHT. Refresh your app to see changes.');
+            checkTheme();
+        }
+
+        function setDark() {
+            localStorage.setItem('theme', 'dark');
+            alert('Theme set to DARK. Refresh your app to see changes.');
+            checkTheme();
+        }
+
+        // Check on page load
+        checkTheme();
+    </script>
+</body>
+</html>
