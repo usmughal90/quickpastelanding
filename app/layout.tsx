@@ -3,6 +3,7 @@ import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Navbar from "./components/Navbar";
+import { jsonLD } from "./data/home";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -18,11 +19,12 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Clipboard Manager Quick Paste",
-  description: "A secure iOS clipboard manager that saves text, images, and links.",
+  description:
+    "A secure iOS clipboard manager that saves text, images, and links.",
   other: {
     // iOS App Store
-    'apple-itunes-app': 'app-id=6748644352',
-  }
+    "apple-itunes-app": "app-id=6748644352",
+  },
 };
 
 export default function RootLayout({
@@ -46,6 +48,10 @@ export default function RootLayout({
               } catch (e) {}
             `,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
         />
       </head>
       <body
