@@ -4,23 +4,23 @@ export const jsonLD = {
 
     {
       "@type": "Organization",
-      "name": "Codematics",
-      "url": "https://quickpaste.codematics.co"
+      "name": "CodeBuster Apps",
+      "url": "https://quickpaste.codebusterapps.com"
     },
 
     {
       "@type": "SoftwareApplication",
       "name": "Clipboard Manager - QuickPaste",
       "alternateName": "Quick Paste Clipboard Tool for iOS",
-      "url": "https://quickpaste.codematics.co",
+      "url": "https://quickpaste.codebusterapps.com",
       "downloadUrl": "https://apps.apple.com/pk/app/copy-paste-keyboard/id6748644352",
       "applicationCategory": "ProductivityApplication",
-      "operatingSystem": "iOS",
       "applicationSubCategory": "Clipboard Manager",
+      "operatingSystem": "iOS",
       "description": "Clipboard Manager - QuickPaste is a productivity app for iPhone that adds clipboard history to iOS. It allows users to save copied text, images, and links, organise clipboard items, reuse saved content across apps, and paste instantly using a custom keyboard extension. Clipboard data is stored locally on the device with optional Face ID protection for privacy.",
       "publisher": {
         "@type": "Organization",
-        "name": "Codematics"
+        "name": "CodeBuster Apps"
       },
       "offers": {
         "@type": "Offer",
@@ -138,31 +138,11 @@ export const jsonLD = {
       "@type": "ItemList",
       "name": "QuickPaste vs Default iOS Clipboard Comparison",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Clipboard History Support"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Save Multiple Text, Images and Links"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Keyboard Extension for Instant Paste"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Face ID Protection"
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "Local Secure Storage"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Clipboard History Support" },
+        { "@type": "ListItem", "position": 2, "name": "Save Multiple Text, Images and Links" },
+        { "@type": "ListItem", "position": 3, "name": "Keyboard Extension for Instant Paste" },
+        { "@type": "ListItem", "position": 4, "name": "Face ID Protection" },
+        { "@type": "ListItem", "position": 5, "name": "Local Secure Storage" }
       ]
     }
 

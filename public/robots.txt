@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://quickpaste.codematics.co/sitemap.xml
+
+Sitemap: https://quickpaste.codebusterapps.com/sitemap.xml
