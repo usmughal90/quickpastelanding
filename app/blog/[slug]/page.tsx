@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { getBlogPostBySlug } from "../../endpoints/blog";
 import { BlogPost, BlogPostsResponse } from "@/app/types/types";
 import ContentRenderer from "@/app/components/ContentRenderer";
-
+import CKContentRenderer from "@/app/components/shared/CKContentRenderer";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -26,13 +26,12 @@ export async function generateMetadata({
   const canonical =
     seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_DOMAIN}/blog/${slug}`;
 
-  const ogImageUrl =
-    seo?.ogImage?.url || post.featuredImage?.url;
+  const ogImageUrl = seo?.ogImage?.url || post.featuredImage?.url;
 
   return {
     title: title ?? "Blog",
     description: description ?? "",
-     alternates: {
+    alternates: {
       canonical,
     },
 
@@ -50,7 +49,7 @@ export async function generateMetadata({
         },
       ],
     },
-      twitter: {
+    twitter: {
       card: "summary_large_image",
       title,
       description,
@@ -88,7 +87,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
     ? `${process.env.NEXT_PUBLIC_API_IMAGE_URL}${imageUrl}`
     : "";
 
-  const author = post.author ?? ''
+  const author = post.author ?? "";
 
   return (
     <div className="min-h-dvh bg-white dark:bg-gray-950">
@@ -137,9 +136,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </div>
         ) : null}
 
-        {post?.content && (
+        {post.advanceContentFeature ? (
           <article className="text-zinc-900 dark:text-white mt-10 max-w-none">
-            <ContentRenderer content={post.content} />
+            <CKContentRenderer content={post?.content2 || ""} />
+            {/* <ContentRenderer content={post.content} /> */}
+          </article>
+        ) : (
+          <article className="text-zinc-900 dark:text-white mt-10 max-w-none">
+            <ContentRenderer content={post.content || ""} />
           </article>
         )}
 

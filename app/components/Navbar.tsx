@@ -10,6 +10,7 @@ export default async function Navbar() {
     page: 1,
     pageSize: 1,
   });
+  console.log('blogs',blogs);
 
   return (
     <div className="sticky top-0 z-50 w-full">

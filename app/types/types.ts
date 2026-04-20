@@ -44,7 +44,7 @@ interface BlogPost {
   title: string;
   slug: string;
   shortDescription: string;
-  content: ContentBlock[];
+  content?: ContentBlock[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -52,6 +52,8 @@ interface BlogPost {
   featuredImage: FeaturedImage;
   seo: any | null;
   author:string;
+  content2?:string;
+  advanceContentFeature:boolean
 }
 
 

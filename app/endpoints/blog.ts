@@ -1,5 +1,5 @@
 async function getLatestBlogPosts() {
- const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quick-paste-features?sort=createdAt:desc`,{
+ const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs?filters[appName][$eq]=quick-paste-manager`,{
   cache: 'no-store',
  });
  
