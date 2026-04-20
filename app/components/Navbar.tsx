@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBlogPostsPage, getLatestBlogPosts } from '../endpoints/blog';
+import { getBlogPostsPage, getFeatures, getLatestBlogPosts } from '../endpoints/blog';
 import NavbarClient from './NavbarClient';
 import { BlogPostsResponse } from '../types/types';
 
 export default async function Navbar() {
-  const { visibleCount } = await getLatestBlogPosts();
+  const features = await getFeatures();
   const blogs: BlogPostsResponse = await getBlogPostsPage({
     page: 1,
     pageSize: 1,
@@ -33,7 +33,7 @@ export default async function Navbar() {
         </div>
 
         {/* RIGHT SIDE: Client handles links + theme toggle */}
-        <NavbarClient visibleCount={visibleCount} postCount={blogs.data.length} />
+        <NavbarClient visibleCount={features?.length} postCount={blogs.data.length} />
       </nav>
     </div>
   );

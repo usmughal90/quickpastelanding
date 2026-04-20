@@ -9,6 +9,15 @@ async function getLatestBlogPosts() {
  return {visibleUpdates,visibleCount};
 }
 
+async function getFeatures() {
+ const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quick-paste-features`,{
+  cache: 'no-store',
+ });
+ 
+ const features = await res.json();
+ return features?.data;
+}
+
 async function getBlogPostsPage(options?: { page?: number; pageSize?: number }) {
   const page = options?.page ?? 1;
   const pageSize = options?.pageSize ?? 9;
@@ -44,4 +53,4 @@ async function getBlogPostBySlug(slug: string) {
   return blogPost;
 }
 
-export { getLatestBlogPosts, getBlogPostsPage,getBlogPostBySlug };
+export { getLatestBlogPosts, getBlogPostsPage,getBlogPostBySlug, getFeatures };
