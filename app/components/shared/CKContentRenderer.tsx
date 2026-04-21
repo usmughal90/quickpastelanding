@@ -11,7 +11,7 @@ type CKProps = {
 export default function CKContentRenderer({content} : CKProps) {
     const contentDisplay = content.replace(
   /src="\/uploads/g,
-  `src="${BASE_URL}/uploads`
+  `src="${BASE_URL}/`
 );
   return (
     <div
