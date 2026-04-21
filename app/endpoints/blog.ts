@@ -50,6 +50,7 @@ async function getBlogPostBySlug(slug: string) {
 
   const res = await fetch(url.toString(), { cache: "no-store" });
   const blogPost = await res.json();
+  console.log('blogPost',blogPost);
   return blogPost;
 }
 
