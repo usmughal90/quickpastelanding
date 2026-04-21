@@ -136,14 +136,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </div>
         ) : null}
 
-        {post.advanceContentFeature ? (
+        {post?.advanceContentFeature ? (
           <article className="text-zinc-900 dark:text-white mt-10 max-w-none">
             <CKContentRenderer content={post?.content2 || ""} />
             {/* <ContentRenderer content={post.content} /> */}
           </article>
         ) : (
           <article className="text-zinc-900 dark:text-white mt-10 max-w-none">
-            <ContentRenderer content={post.content || ""} />
+            <ContentRenderer content={post?.content || ""} />
           </article>
         )}
 
