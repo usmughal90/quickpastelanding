@@ -43,7 +43,7 @@ export async function generateMetadata({
       type: "article",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_API_IMAGE_URL}/${ogImageUrl}`,
+          url: `${process.env.NEXT_PUBLIC_API_IMAGE_URL}${ogImageUrl}`,
           width: 1200,
           height: 630,
           alt: title,
@@ -54,7 +54,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/${ogImageUrl}`],
+      images: [`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${ogImageUrl}`],
     },
   };
 }
