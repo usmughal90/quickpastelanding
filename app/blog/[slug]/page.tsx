@@ -26,6 +26,7 @@ export async function generateMetadata({
   const canonical =
     seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_DOMAIN}/blog/${slug}`;
 
+
   const ogImageUrl = seo?.ogImage?.url || post.featuredImage?.url;
 
   return {
@@ -42,7 +43,7 @@ export async function generateMetadata({
       type: "article",
       images: [
         {
-          url: ogImageUrl,
+          url: `${process.env.NEXT_PUBLIC_API_IMAGE_URL}/${ogImageUrl}`,
           width: 1200,
           height: 630,
           alt: title,
@@ -53,7 +54,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [ogImageUrl],
+      images: [`${process.env.NEXT_PUBLIC_API_IMAGE_URL}/${ogImageUrl}`],
     },
   };
 }
@@ -86,6 +87,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const heroSrc = imageUrl
     ? `${process.env.NEXT_PUBLIC_API_IMAGE_URL}${imageUrl}`
     : "";
+    
 
   const author = post.author ?? "";
 
