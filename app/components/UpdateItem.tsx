@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Article } from "../types/types";
 import ContentRenderer from "./ContentRenderer";
+import { buildImageUrl } from "../utils/urls";
 
 interface UpdatePostProps {
   data: Article;
@@ -21,6 +22,8 @@ const UpdateItem: React.FC<UpdatePostProps> = ({
     blogUrl,
   },
 }) => {
+  const imageSrc = featureImage?.url ? buildImageUrl(featureImage.url) : null;
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-16 py-16 md:py-24 first:pt-0 border-b border-gray-200 dark:border-gray-800 last:border-none relative">
       {/* Left Column: Title & Date (Sticky behavior added here) */}
@@ -39,10 +42,10 @@ const UpdateItem: React.FC<UpdatePostProps> = ({
 
       {/* Right Column: Content */}
       <div className="lg:col-span-3 flex flex-col gap-8">
-        {featureImage?.url && (
-          <div className="w-full aspect-[2/1] relative overflow-hidden rounded-3xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700/50">
+        {imageSrc && (
+          <div className="w-full aspect-2/1 relative overflow-hidden rounded-3xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700/50">
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${featureImage.url}`}
+              src={imageSrc}
               alt={featureImage.alternativeText ?? featureImage.name}
               fill
               className="object-cover"

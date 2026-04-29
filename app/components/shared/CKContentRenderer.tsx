@@ -1,8 +1,9 @@
 "use client"
 
 import DOMPurify from "isomorphic-dompurify";
+import { buildImageUrl } from "@/app/utils/urls";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_IMAGE_URL;
+const uploadsBaseUrl = buildImageUrl("/uploads") ?? "/uploads";
 
 type CKProps = {
     content:string
@@ -11,7 +12,7 @@ type CKProps = {
 export default function CKContentRenderer({content} : CKProps) {
     const contentDisplay = content.replace(
   /src="\/uploads/g,
-  `src="${BASE_URL}/`
+  `src="${uploadsBaseUrl}/`
 );
   return (
     <div

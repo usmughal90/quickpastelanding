@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FeaturedImage } from "../types/types";
+import { buildImageUrl } from "../utils/urls";
 
 interface BlogItemProps {
   title: string;
@@ -14,6 +15,8 @@ const BlogItem: React.FC<BlogItemProps> = ({
   date,
   featuredImage,
 }) => {
+  const imageSrc = featuredImage?.url ? buildImageUrl(featuredImage.url) : null;
+
   return (
     <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 py-12 md:py-16 border-b border-gray-200 dark:border-gray-800 last:border-none group cursor-pointer">
       <div className="flex flex-col gap-3 max-w-2xl">
@@ -31,10 +34,10 @@ const BlogItem: React.FC<BlogItemProps> = ({
           {description}
         </p>
       </div>
-      {featuredImage?.url && (
-        <div className="w-full md:w-[320px] aspect-[16/10] relative flex-shrink-0 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
+      {imageSrc && (
+        <div className="w-full md:w-[320px] aspect-16/10 relative shrink-0 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${featuredImage.url}`}
+            src={imageSrc}
             alt={featuredImage.alternativeText || title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"

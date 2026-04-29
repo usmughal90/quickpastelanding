@@ -6,6 +6,7 @@ import { getBlogPostBySlug } from "../../endpoints/blog";
 import { BlogPost, BlogPostsResponse } from "@/app/types/types";
 import ContentRenderer from "@/app/components/ContentRenderer";
 import CKContentRenderer from "@/app/components/shared/CKContentRenderer";
+import { buildImageUrl } from "@/app/utils/urls";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -28,6 +29,7 @@ export async function generateMetadata({
 
 
   const ogImageUrl = seo?.ogImage?.url || post.featuredImage?.url;
+  const ogImage = ogImageUrl ? buildImageUrl(ogImageUrl) : null;
 
   return {
     title: title ?? "Blog",
@@ -41,20 +43,22 @@ export async function generateMetadata({
       description,
       url: canonical,
       type: "article",
-      images: [
-        {
-          url: `${process.env.NEXT_PUBLIC_API_IMAGE_URL}${ogImageUrl}`,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: title,
+            },
+          ]
+        : [],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${ogImageUrl}`],
+      images: ogImage ? [ogImage] : [],
     },
   };
 }
@@ -84,9 +88,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
     post.featuredImage?.alternativeText ??
     title;
 
-  const heroSrc = imageUrl
-    ? `${process.env.NEXT_PUBLIC_API_IMAGE_URL}${imageUrl}`
-    : "";
+  const heroSrc = imageUrl ? buildImageUrl(imageUrl) : null;
     
 
   const author = post.author ?? "";
