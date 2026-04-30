@@ -92,7 +92,7 @@ async function getBlogPostsPage(options?: {
   // Strapi-style pagination params
   url.searchParams.set("pagination[page]", String(page));
   url.searchParams.set("pagination[pageSize]", String(pageSize));
-  url.searchParams.set('sort', 'rank:desc');
+  url.searchParams.set('sort', 'createdAt:desc');
 
   // Ensure nested fields used by the UI are available (safe even if backend ignores it)
   url.searchParams.set("populate[blogDetailPage][populate]", "thumbnail");
