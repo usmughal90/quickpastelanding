@@ -12,6 +12,13 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_API_DOMAIN || "https://quickpaste.codebusterapps.com";
+
+function buildSiteUrl(path: string) {
+  return new URL(path, SITE_URL).toString();
+}
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -24,8 +31,7 @@ export async function generateMetadata({
   const seo = post.seo;
   const title = seo?.ogTitle || post.title;
   const description = seo?.ogDescription || post.shortDescription || "";
-  const canonical =
-    seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_DOMAIN}/blog/${slug}`;
+  const canonical = seo?.canonicalUrl || buildSiteUrl(`/blog/${slug}`);
 
 
   const ogImageUrl = seo?.ogImage?.url || post.featuredImage?.url;
@@ -71,7 +77,6 @@ export default async function BlogDetailPage({ params }: PageProps) {
   if (!post) notFound();
 
   const title = post.title ?? "";
-  const excerpt = post.shortDescription ?? "";
   const createdAt = post?.createdAt ?? "";
   const publishedAt = post?.publishedAt ?? createdAt;
   const formattedDate = publishedAt
@@ -92,6 +97,10 @@ export default async function BlogDetailPage({ params }: PageProps) {
     
 
   const author = post.author ?? "";
+  const ckContent = typeof post.content2 === "string" ? post.content2 : "";
+  const legacyContent = Array.isArray(post.content) ? post.content : [];
+  const shouldRenderCKContent =
+    post.advanceContentFeature && ckContent.trim().length > 0;
 
   return (
     <div className="min-h-dvh bg-white dark:bg-gray-950">
@@ -140,14 +149,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
           </div>
         ) : null}
 
-        {post?.advanceContentFeature ? (
+        {shouldRenderCKContent ? (
           <article className="text-zinc-900 dark:text-white mt-10 max-w-none">
-            <CKContentRenderer content={post?.content2 || ""} />
-            {/* <ContentRenderer content={post.content} /> */}
+            <CKContentRenderer content={ckContent} />
           </article>
         ) : (
           <article className="text-zinc-900 dark:text-white mt-10 max-w-none">
-            <ContentRenderer content={post?.content || ""} />
+            <ContentRenderer content={legacyContent} />
           </article>
         )}
 
