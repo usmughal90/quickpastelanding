@@ -2,14 +2,22 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    localPatterns:[{
-      pathname:'/**',
-    }],
+    localPatterns: [
+      {
+        pathname: "/**",
+      },
+    ],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'landing.codematics.co',
-        pathname: '/uploads/**',
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "landing.codematics.co",
+        pathname: "/uploads/**",
       },
     ],
   },

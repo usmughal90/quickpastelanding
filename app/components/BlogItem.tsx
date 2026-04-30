@@ -40,6 +40,7 @@ const BlogItem: React.FC<BlogItemProps> = ({
             src={imageSrc}
             alt={featuredImage.alternativeText || title}
             fill
+            unoptimized
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
         </div>

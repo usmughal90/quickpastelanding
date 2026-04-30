@@ -48,6 +48,7 @@ const UpdateItem: React.FC<UpdatePostProps> = ({
               src={imageSrc}
               alt={featureImage.alternativeText ?? featureImage.name}
               fill
+              unoptimized
               className="object-cover"
             />
           </div>
