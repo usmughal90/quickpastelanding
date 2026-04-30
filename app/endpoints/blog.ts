@@ -107,7 +107,7 @@ async function getBlogPostBySlug(slug: string): Promise<BlogPostsResponse> {
 
   url.searchParams.set("filters[slug][$eq]", slug);
   // Grab everything needed for the detail page (text + images)
-  // url.searchParams.set("populate[blogDetailPage][populate]", "*");
+  url.searchParams.set("populate", "*");
 
   return (await fetchApiJson<BlogPostsResponse>(url)) ?? emptyBlogPostsResponse;
 }
