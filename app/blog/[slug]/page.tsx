@@ -7,17 +7,11 @@ import { BlogPost, BlogPostsResponse } from "@/app/types/types";
 import ContentRenderer from "@/app/components/ContentRenderer";
 import CKContentRenderer from "@/app/components/shared/CKContentRenderer";
 import { buildImageUrl } from "@/app/utils/urls";
+import { buildPublicSiteUrl } from "@/app/utils/siteUrl";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_API_DOMAIN || "https://quickpaste.codebusterapps.com";
-
-function buildSiteUrl(path: string) {
-  return new URL(path, SITE_URL).toString();
-}
 
 export async function generateMetadata({
   params,
@@ -31,7 +25,7 @@ export async function generateMetadata({
   const seo = post.seo;
   const title = seo?.ogTitle || post.title;
   const description = seo?.ogDescription || post.shortDescription || "";
-  const canonical = seo?.canonicalUrl || buildSiteUrl(`/blog/${slug}`);
+  const canonical = seo?.canonicalUrl || buildPublicSiteUrl(`/blog/${slug}`);
 
 
   const ogImageUrl = seo?.ogImage?.url || post.featuredImage?.url;
