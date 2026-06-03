@@ -1,0 +1,97 @@
+# Quick Paste: iOS Clipboard Manager
+
+> Quick Paste is a free, privacy-focused clipboard manager app for iPhone and iPad. It saves text, images, and links beyond iOS's default single-item clipboard limit, giving users a searchable clipboard history with Face ID protection, a paste keyboard extension, and optional iCloud sync across iPhone and iPad.
+
+Quick Paste (App Store ID: 6748644352) is developed by Codebuster Apps and targets iPhone and iPad users on iOS who need to manage multiple copied items, reuse repeated content, and paste efficiently across apps — with the option to sync clipboard history across devices via iCloud.
+
+<!-- Last updated: June 2026 — reflects all blog posts currently published -->
+
+## Product Details
+
+- **Platform**: iOS (iPhone & iPad)
+- **Price**: Free
+- **App Store**: https://apps.apple.com/pk/app/copy-paste-keyboard/id6748644352
+- **Developer**: Codebuster Apps
+- **Website**: https://quickpaste.codebusterapps.com
+- **Storage**: On-device by default; optional iCloud sync across iPhone and iPad
+- **Security**: Face ID protection per clip
+- **Account required**: No
+
+## Core Features
+
+- Clipboard history: saves multiple copied items (text, images, links) unlike the iOS default which stores only the last item
+- iCloud Sync: optionally sync clipboard history across iPhone and iPad via iCloud — clips saved on one device are available on the other
+- Keyboard extension: paste saved clips directly from the iOS keyboard without switching apps
+- Action Extension: save any copied content via the iOS Share sheet
+- Face ID lock: optional biometric protection for clipboard history
+- On-device storage by default: no mandatory cloud sync, no account required, fully private
+- Lightweight and free
+
+## Use Cases
+
+- Professionals reusing email templates, signatures, and standard replies across iPhone and iPad
+- Students saving research links, citations, and notes while switching between devices and apps
+- Content creators managing promo codes, affiliate links, and brand deal copy
+- Developers storing code snippets and command strings accessible on all their Apple devices
+- iPad users who copy content on iPhone and need it instantly available on their iPad
+- Anyone who frequently transfers information between iOS apps or across devices
+
+## How It Works
+
+1. Enable the Quick Paste Action Extension via iOS Share sheet settings
+2. Copy any text, image, or link — save it to Quick Paste via Share → Copy to Quick Paste
+3. While typing in any app, long-press the language switch key on the iOS keyboard
+4. Select Quick Paste, view saved clips, tap any item to paste instantly
+5. Optionally enable iCloud Sync in settings to access your clipboard history across all your iPhone and iPad devices
+
+## Comparisons
+
+- [Quick Paste vs Paste vs Paste Pal: Best Clipboard Manager for iPhone](https://quickpaste.codebusterapps.com/blog/quick-paste-vs-paste-vs-paste-pal-best-clipboard-manager-for-i-phone): Side-by-side comparison of features, pricing, and privacy across the three leading iOS clipboard managers in 2026.
+- [Best 6 Clipboard Apps Reviewed](https://quickpaste.codebusterapps.com/blog/which-clipboard-manager-should-you-choose-best-6-clipboard-apps-reviewed): Covers QuickPaste, Paste, PastePal, Maccy, CopyQ, and Clipper — features, usability, and performance compared.
+- [Best Clipboard Manager App for iPhone in 2026](https://quickpaste.codebusterapps.com/blog/what-is-the-best-clipboard-manager-app-for-i-phone-in-2026): Category-level ranking and analysis of the top iOS clipboard managers.
+
+## Blog
+
+### Getting Started & Fundamentals
+- [What Is a Clipboard Manager and Why You Need One in 2026](https://quickpaste.codebusterapps.com/blog/what-is-a-clipboard-manager-and-why-you-need-one-in-2026): Explains what clipboard managers are, how the default iOS clipboard is limited, and why clipboard history has become essential for iPhone productivity in 2026.
+- [Copy Paste App for iPhone: The Complete Guide](https://quickpaste.codebusterapps.com/blog/copy-paste-app-for-i-phone-the-only-guide-you-ll-ever-need): Comprehensive 2026 guide covering how iPhone clipboard apps work, what to look for, and why QuickPaste is the recommended free option with unlimited clipboard history.
+
+### How-To & Tutorials
+- [How to Find Copied Text on iPhone](https://quickpaste.codebusterapps.com/blog/how-to-find-copied-text-on-i-phone): Explains why copied text disappears on iPhone by design, why there is no native clipboard history on iOS, and how a clipboard manager solves this permanently.
+- [How to Add Clipboard on iPhone Keyboard](https://quickpaste.codebusterapps.com/blog/how-to-add-clipboard-on-i-phone-keyboard-best-copy-paste-trick-i-os-1): Step-by-step tutorial for adding clipboard access directly to the iOS keyboard using a keyboard extension.
+- [Clipboard Shortcuts on iPhone — Turn Copy-Paste Into Productivity](https://quickpaste.codebusterapps.com/blog/clipboard-shortcuts-on-i-phone-turn-copy-paste-into-productivity): Practical guide to iOS clipboard shortcuts and how a clipboard manager extends them for faster workflows.
+
+### Productivity & Use Cases
+- [8 iPhone Productivity Tips That Actually Save You Time (2026)](https://quickpaste.codebusterapps.com/blog/8-i-phone-productivity-tips-that-actually-save-you-time-2026-guide): Covers 8 practical iPhone productivity tips including clipboard management, with actionable advice for reducing friction in daily workflows.
+- [How Creators Manage Promo Codes, Affiliate Links, and Brand Deals with a Clipboard Manager](https://quickpaste.codebusterapps.com/blog/how-monetised-creators-manage-promo-codes-affiliate-links-and-brand-deals-with-a-clipboard-manager-app-on-i-phone-1): Use-case guide for UGC creators, influencers, and affiliate marketers managing high volumes of links and codes on iPhone.
+
+### App Comparisons & Reviews
+- [Quick Paste vs Paste vs Paste Pal: Best Clipboard Manager for iPhone](https://quickpaste.codebusterapps.com/blog/quick-paste-vs-paste-vs-paste-pal-best-clipboard-manager-for-i-phone): Side-by-side comparison of features, pricing, and privacy across the three leading iOS clipboard managers in 2026.
+- [Best 6 Clipboard Apps Reviewed](https://quickpaste.codebusterapps.com/blog/which-clipboard-manager-should-you-choose-best-6-clipboard-apps-reviewed): Covers QuickPaste, Paste, PastePal, Maccy, CopyQ, and Clipper — features, usability, and performance compared.
+- [Best Clipboard Manager App for iPhone in 2026](https://quickpaste.codebusterapps.com/blog/what-is-the-best-clipboard-manager-app-for-i-phone-in-2026): Category-level ranking and analysis of the top iOS clipboard managers.
+
+## FAQs
+
+**Does iPhone support clipboard history by default?**
+No. iOS only stores the most recently copied item. Once you copy something new, the previous item is permanently lost. A clipboard manager app adds persistent clipboard history to iPhone.
+
+**Does Quick Paste sync across iPhone and iPad?**
+Yes. Quick Paste supports optional iCloud sync, so your clipboard history is available across all your iPhone and iPad devices. Sync is opt-in — data stays on-device by default if you prefer.
+
+**Is clipboard data private in Quick Paste?**
+Yes. By default, all data is stored on-device only. If iCloud Sync is enabled, data is synced securely through your personal iCloud account. Clipboard history can also be locked with Face ID.
+
+**Can you recover previously copied text on iPhone?**
+Not with the default iOS clipboard — once replaced, it is gone. Quick Paste solves this by saving a full clipboard history so nothing is ever lost.
+
+**Does Quick Paste work across all iPhone apps?**
+Saved clips can be pasted across supported apps using the keyboard extension. The app uses iOS-permitted methods and does not intercept system-level clipboard at the OS level.
+
+**Is Quick Paste free?**
+Yes. The app is free with no mandatory in-app purchases.
+
+**What content types can Quick Paste save?**
+Text, images, and links.
+
+**Who is Quick Paste useful for?**
+Students, professionals, writers, developers, content creators, and anyone who copies text, links, or images more than once a day on iPhone or iPad.

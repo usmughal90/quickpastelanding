@@ -49,6 +49,8 @@ export default function HowItWorks() {
                 loop
                 muted
                 playsInline
+                preload="metadata"
+                aria-label="Demo: enabling the Quick Paste keyboard on iPhone"
               />
             </div>
           </div>

@@ -10,7 +10,7 @@ const clipboardFeatures: FeatureBullet[] = [
   { text: "Store multiple content types in one clipboard list" },
   { text: "Paste saved items directly from the iOS keyboard" },
   { text: "Organise frequently used copied content" },
-  { text: "Protect clipboard history with Face lock" },
+  { text: "Protect clipboard history with Face ID lock" },
   { text: "Clipboard data never leaves your device" },
   { text: "Fast, responsive, and free of cost" },
 ];

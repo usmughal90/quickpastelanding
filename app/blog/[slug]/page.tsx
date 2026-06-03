@@ -8,6 +8,7 @@ import ContentRenderer from "@/app/components/ContentRenderer";
 import CKContentRenderer from "@/app/components/shared/CKContentRenderer";
 import { buildImageUrl } from "@/app/utils/urls";
 import { buildPublicSiteUrl } from "@/app/utils/siteUrl";
+import { buildBlogPostJsonLd } from "@/app/utils/blogJsonLd";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -96,8 +97,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const shouldRenderCKContent =
     post.advanceContentFeature && ckContent.trim().length > 0;
 
+  const postJsonLd = buildBlogPostJsonLd(post, slug);
+
   return (
     <div className="min-h-dvh bg-white dark:bg-gray-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(postJsonLd) }}
+      />
       <section className="mx-auto w-full max-w-4xl px-6 py-10">
         <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold">
           <Link href="/" className="text-(--color-primary) hover:underline">

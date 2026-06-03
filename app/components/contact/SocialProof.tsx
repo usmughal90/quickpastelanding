@@ -13,13 +13,6 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: 1,
-        name: "Ajimu",
-        text: "Client Pro exceeded our expectations with its ease of use and powerful features. Perfect for anyone looking to create high-quality landing pages.",
-        date: 'Jan 8, 2026',
-        rating: 5,
-    },
-    {
-        id: 2,
         name: "Alex",
         text: "Best clipboard app I've used so far. Everything feels structured and quick to access. Clean, fast, and really helpful for daily work.",
         date: 'Feb 5, 2026',

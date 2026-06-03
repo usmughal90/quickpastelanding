@@ -1,150 +1,224 @@
+import { buildPublicSiteUrl } from "../utils/siteUrl";
+
+const siteOrigin = buildPublicSiteUrl("/").replace(/\/$/, "");
+const appStoreUrl =
+  "https://apps.apple.com/pk/app/copy-paste-keyboard/id6748644352";
+
 export const jsonLD = {
-  "@context": "https://schema.org",
-  "@graph": [
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "CodeBuster Apps",
+      url: siteOrigin,
+      logo: buildPublicSiteUrl("/logo.png"),
+      sameAs: [appStoreUrl],
+    },
 
-    {
-      "@type": "Organization",
-      "name": "CodeBuster Apps",
-      "url": "https://quickpaste.codebusterapps.com"
-    },
+    {
+      "@type": ["SoftwareApplication", "MobileApplication"],
+      name: "Clipboard Manager - QuickPaste",
+      alternateName: "Quick Paste Clipboard Tool for iOS",
+      url: siteOrigin,
+      downloadUrl: appStoreUrl,
+      applicationCategory: "ProductivityApplication",
+      applicationSubCategory: "Clipboard Manager",
+      operatingSystem: "iOS 16.0 or later",
+      description:
+        "QuickPaste is a free clipboard manager for iPhone and iPad that adds unlimited clipboard history to iOS. Save copied text, images, and links, reuse them across any app via a keyboard extension, and optionally sync across devices with iCloud. Clipboard data is stored locally with optional Face ID protection.",
+      image: buildPublicSiteUrl("/og-image.png"),
+      screenshot: [
+        buildPublicSiteUrl("/screenshots/screen1.png"),
+        buildPublicSiteUrl("/screenshots/screen2.png"),
+        buildPublicSiteUrl("/screenshots/screen3.png"),
+      ],
+      publisher: {
+        "@type": "Organization",
+        name: "CodeBuster Apps",
+      },
+      offers: {
+        "@type": "Offer",
+        url: appStoreUrl,
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+      },
+      isAccessibleForFree: true,
+      featureList: [
+        "Unlimited clipboard history for iPhone and iPad",
+        "Save and reuse copied text, images, and links",
+        "iCloud sync across iPhone and iPad",
+        "Paste directly using iOS keyboard extension",
+        "Action extension for instant saving via Share sheet",
+        "Searchable clipboard history",
+        "Face ID protection for clipboard history",
+        "Local on-device storage with no external data sharing",
+        "No account required",
+        "Free to use",
+      ],
+    },
 
-    {
-      "@type": "SoftwareApplication",
-      "name": "Clipboard Manager - QuickPaste",
-      "alternateName": "Quick Paste Clipboard Tool for iOS",
-      "url": "https://quickpaste.codebusterapps.com",
-      "downloadUrl": "https://apps.apple.com/pk/app/copy-paste-keyboard/id6748644352",
-      "applicationCategory": "ProductivityApplication",
-      "applicationSubCategory": "Clipboard Manager",
-      "operatingSystem": "iOS",
-      "description": "Clipboard Manager - QuickPaste is a productivity app for iPhone that adds clipboard history to iOS. It allows users to save copied text, images, and links, organise clipboard items, reuse saved content across apps, and paste instantly using a custom keyboard extension. Clipboard data is stored locally on the device with optional Face ID protection for privacy.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "CodeBuster Apps"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://apps.apple.com/pk/app/copy-paste-keyboard/id6748644352",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      "isAccessibleForFree": true,
-      "featureList": [
-        "Save and reuse copied text, images, and links",
-        "Unlimited clipboard history for iPhone",
-        "Reuse saved clipboard items across apps",
-        "Paste directly using iOS keyboard extension",
-        "Action extension for instant saving",
-        "Organise frequently used copied content",
-        "Searchable clipboard list",
-        "Face ID protection for clipboard history",
-        "Local storage with no external data sharing",
-        "Fast, responsive, and free to use"
-      ]
-    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is a clipboard manager on iPhone?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A clipboard manager is an app that saves your copied items and provides clipboard history so you can paste previous content again. QuickPaste is a free clipboard manager for iPhone that stores unlimited copied text, images, and links and lets you reuse them instantly via a keyboard extension.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does iPhone support clipboard history by default?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. iOS only stores the most recently copied item. Once you copy something new, the previous item is permanently lost. QuickPaste adds full clipboard history to iPhone, so nothing you copy is ever lost.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the best way to save copied text on iPhone?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The best way to save copied text on iPhone is to use QuickPaste, a free clipboard manager that automatically stores everything you copy and lets you reuse it instantly from your keyboard — without switching apps.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is clipboard data private in QuickPaste?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. QuickPaste stores all clipboard data locally on your device by default. No data is shared externally. You can also enable Face ID to lock your clipboard history. If iCloud Sync is enabled, data syncs only through your personal iCloud account.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can QuickPaste save images and links as well as text?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. QuickPaste can save text, images, and links to your clipboard history. All saved items are accessible from the keyboard extension and can be pasted into any supported app instantly.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How can I see my copy paste history on iPhone?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can view your copy-paste history on iPhone by using QuickPaste. It stores everything you copy in a searchable list, which you can access directly from your keyboard while typing in any app.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does QuickPaste work across different apps on iPhone?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. QuickPaste works across apps using its keyboard extension. While typing in any app, you can open your saved clipboard history and paste any item without leaving the app you are in.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does QuickPaste sync clipboard history across iPhone and iPad?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. QuickPaste supports optional iCloud sync so your clipboard history is available across all your iPhone and iPad devices. Sync is opt-in and disabled by default — your data stays on-device unless you choose to enable it.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is QuickPaste free?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. QuickPaste is completely free to download and use with no mandatory in-app purchases. It is available on the App Store for iPhone and iPad.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does the clipboard manager automatically capture everything I copy?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "QuickPaste captures copied content using iOS-permitted methods via the Action Extension and keyboard extension. It does not intercept clipboard data at the system level. To save an item, use the Share sheet and tap Copy to Quick Paste.",
+          },
+        },
+      ],
+    },
 
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
+    {
+      "@type": "HowTo",
+      name: "How to Use Clipboard History on iPhone with QuickPaste",
+      description:
+        "Learn how to save copied text, images, and links on iPhone and paste them across any app using QuickPaste clipboard manager.",
+      totalTime: "PT2M",
+      tool: {
+        "@type": "HowToTool",
+        name: "QuickPaste — Clipboard Manager for iPhone",
+      },
+      step: [
+        {
+          "@type": "HowToStep",
+          position: "1",
+          name: "Enable the Action Extension",
+          text: "Go to iOS Settings and enable the Quick Paste Action Extension. Then select any text, image, or link in any app, tap the Share button, and choose Copy to Quick Paste to save it to your clipboard history.",
+          url: `${siteOrigin}/#how-it-works`,
+        },
+        {
+          "@type": "HowToStep",
+          position: "2",
+          name: "Access Saved Clips from the Keyboard",
+          text: "While typing in any app, long-press the language switch key on the iOS keyboard and select Quick Paste. Your saved clipboard history will appear. Tap any item to paste it instantly without switching apps.",
+          url: `${siteOrigin}/#how-it-works`,
+        },
+        {
+          "@type": "HowToStep",
+          position: "3",
+          name: "Enable iCloud Sync (Optional)",
+          text: "Open the QuickPaste app, go to Settings, and enable iCloud Sync to access your clipboard history across all your iPhone and iPad devices automatically.",
+          url: `${siteOrigin}/#how-it-works`,
+        },
+      ],
+    },
 
-        {
-          "@type": "Question",
-          "name": "What is a clipboard manager on iPhone?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A clipboard manager is an app that saves copied items and provides clipboard history so users can paste previous content again."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the best way to save copied text on iPhone?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Using a clipboard manager app that stores copied text and lets you reuse it later."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is clipboard data private?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "In privacy-focused clipboard managers, data is stored locally on the device and can be protected with Face ID."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does iPhone support clipboard history?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Not by default. A clipboard manager app adds clipboard history functionality to iOS."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can a clipboard app save images and links?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Advanced clipboard managers can store text, images, and links in a structured clipboard list."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I see my copy paste history on iPhone?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can view copy-paste history by using a clipboard manager app that stores copied content and shows it in a searchable list."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does a clipboard manager work across different apps?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, saved clipboard items can be reused across supported apps using paste features and keyboard extensions."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the clipboard manager automatically capture everything I copy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It captures copied content based on app permissions and supported methods, not system-level interception."
-          }
-        }
+    {
+      "@type": "ItemList",
+      name: "Best Clipboard Manager Apps for iPhone 2026",
+      description:
+        "A curated list of the top clipboard manager apps for iPhone, including comparisons and reviews.",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "QuickPaste — Best Free Clipboard Manager for iPhone",
+          url: siteOrigin,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "QuickPaste vs Paste vs PastePal — Full Comparison",
+          url: buildPublicSiteUrl(
+            "/blog/quick-paste-vs-paste-vs-paste-pal-best-clipboard-manager-for-i-phone",
+          ),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Best 6 Clipboard Manager Apps Reviewed",
+          url: buildPublicSiteUrl(
+            "/blog/which-clipboard-manager-should-you-choose-best-6-clipboard-apps-reviewed",
+          ),
+        },
+      ],
+    },
 
-      ]
-    },
-
-    {
-      "@type": "HowTo",
-      "name": "How Clipboard Manager - QuickPaste Works on iPhone",
-      "description": "Learn how to enable clipboard history and reuse copied content on iPhone using QuickPaste.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "name": "Enable Action Extension for Limitless Copying",
-          "text": "Turn on the Quick Paste Action Extension to save anything instantly. Select any text or image, tap Share, and choose Copy to Quick Paste."
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Use the Paste Keyboard Anywhere",
-          "text": "While typing, long-press the language switch key, select Quick Paste, view saved clips, and tap any item to paste instantly."
-        }
-      ]
-    },
-
-    {
-      "@type": "ItemList",
-      "name": "QuickPaste vs Default iOS Clipboard Comparison",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Clipboard History Support" },
-        { "@type": "ListItem", "position": 2, "name": "Save Multiple Text, Images and Links" },
-        { "@type": "ListItem", "position": 3, "name": "Keyboard Extension for Instant Paste" },
-        { "@type": "ListItem", "position": 4, "name": "Face ID Protection" },
-        { "@type": "ListItem", "position": 5, "name": "Local Secure Storage" }
-      ]
-    }
-
-  ]
-}
+    {
+      "@type": "VideoObject",
+      name: "How to enable the Quick Paste keyboard on iPhone",
+      description:
+        "Step-by-step demo showing how to enable and use the Quick Paste keyboard extension on iOS.",
+      contentUrl: `${siteOrigin}/video/EnablingKeyboard.mp4`,
+      embedUrl: `${siteOrigin}/video/EnablingKeyboard.mp4`,
+      uploadDate: "2026-02-24",
+      thumbnailUrl: `${siteOrigin}/header.png`,
+    },
+  ],
+};

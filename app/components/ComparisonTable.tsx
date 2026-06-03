@@ -9,14 +9,14 @@ interface Feature {
 export default function ComparisonTable() {
   const features: Feature[] = [
     { name: "clipboard history list", p1: true, p2: false, p3: true },
-    { name: "saves multiple copied list", p1: true, p2: false, p3: true },
+    { name: "saves multiple copied items", p1: true, p2: false, p3: true },
     {
       name: " supports text and images ",
       p1: true,
       p2: "Last Item Only",
       p3: true,
     },
-    { name: " reuse save clipboard itens ", p1: true, p2: false, p3: true },
+    { name: "reuse saved clipboard items", p1: true, p2: false, p3: true },
     { name: "paste without switching apps", p1: true, p2: false, p3: true },
     { name: "face id lock for clipboard data", p1: true, p2: false, p3: false },
     { name: "no account required", p1: true, p2: true, p3: false },
@@ -28,7 +28,7 @@ export default function ComparisonTable() {
       p3: false,
     },
 
-    { name: "light weight clipboard utility", p1: true, p2: "___", p3: false },
+    { name: "light weight clipboard utility", p1: true, p2: false, p3: false },
   ];
 
   return (

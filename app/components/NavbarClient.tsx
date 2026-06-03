@@ -56,15 +56,15 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
       : `${baseClasses} text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white`;
   };
 
-  const scrollToSection = (id: string) => {
+  const handleSectionNav = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
+    if (pathname !== "/") return;
+    e.preventDefault();
     handleClose();
     setTimeout(() => {
-      const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.location.href = `/#${id}`;
-      }
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }, 350);
   };
 
@@ -82,18 +82,20 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
             Blog
           </Link>
         )}
-        <button
-          onClick={() => scrollToSection('faqs')}
-          className="cursor-pointer text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+        <Link
+          href="/#faqs"
+          onClick={(e) => handleSectionNav(e, "faqs")}
+          className="text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
         >
           FAQs
-        </button>
-        <button
-          onClick={() => scrollToSection('contact')}
-          className="cursor-pointer text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+        </Link>
+        <Link
+          href="/#contact"
+          onClick={(e) => handleSectionNav(e, "contact")}
+          className="text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
         >
           Contact
-        </button>
+        </Link>
       </div>
 
       {/* Theme Toggle */}
@@ -170,18 +172,20 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
                   Blog
                 </Link>
               )}
-              <button
-                onClick={() => scrollToSection('faqs')}
-                className="text-left cursor-pointer text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+              <Link
+                href="/#faqs"
+                onClick={(e) => handleSectionNav(e, "faqs")}
+                className="text-left text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
               >
                 FAQs
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-left cursor-pointer text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+              </Link>
+              <Link
+                href="/#contact"
+                onClick={(e) => handleSectionNav(e, "contact")}
+                className="text-left text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
               >
                 Contact
-              </button>
+              </Link>
             </div>
           </div>
         </>

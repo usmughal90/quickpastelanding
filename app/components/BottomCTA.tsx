@@ -1,4 +1,4 @@
-import ContactForm from "./shared/ContactForm";
+import ContactForm from "@/app/components/shared/ContactForm";
 
 export default function BottomCTA() {
   return (
