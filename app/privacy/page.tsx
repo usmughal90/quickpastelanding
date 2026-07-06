@@ -17,6 +17,7 @@ const contactEmail = "codebuster2021@gmail.com";
 const googlePrivacyUrl = "https://policies.google.com/privacy";
 
 export default function PrivacyPage() {
+  const PRIVACY_POLICY_LAST_MODIFIED = new Date("2026-07-06");
   return (
     <main className="min-h-screen bg-white dark:bg-gray-950 pt-28 pb-20 px-6">
       <article className="mx-auto max-w-3xl">
@@ -32,7 +33,7 @@ export default function PrivacyPage() {
           Privacy Policy — QuickPaste
         </h1>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2">
-          Effective Date: June 1, 2025
+          Effective Date: {PRIVACY_POLICY_LAST_MODIFIED.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
         </p>
 
         <div className="mt-8 space-y-8 text-zinc-700 dark:text-zinc-300 leading-relaxed">

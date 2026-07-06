@@ -2,33 +2,71 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from './ThemeProvider';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export default function NavbarClient({ visibleCount, postCount }: { visibleCount: number, postCount: number }) {
+type NavGuide = {
+  slug: string;
+  title: string;
+};
+
+type NavbarClientProps = {
+  visibleCount: number;
+  postCount: number;
+  guides: NavGuide[];
+};
+
+export default function NavbarClient({
+  visibleCount,
+  postCount,
+  guides,
+}: NavbarClientProps) {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [guidesOpen, setGuidesOpen] = useState(false);
+  const [mobileGuidesOpen, setMobileGuidesOpen] = useState(false);
+  const guidesDropdownRef = useRef<HTMLDivElement>(null);
+
+  const hasGuides = guides.length > 0;
+  const isGuidesActive = guides.some((guide) => pathname === `/${guide.slug}`);
+  const guidesListScrollClasses =
+    guides.length > 6 ? "max-h-[15rem] overflow-y-auto overscroll-contain" : "";
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Close menu on route change
   useEffect(() => {
     handleClose();
+    setGuidesOpen(false);
+    setMobileGuidesOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!guidesOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        guidesDropdownRef.current &&
+        !guidesDropdownRef.current.contains(event.target as Node)
+      ) {
+        setGuidesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [guidesOpen]);
+
   const handleOpen = () => {
     setMenuOpen(true);
-    // Small delay so the element is mounted before transition starts
     requestAnimationFrame(() => {
       requestAnimationFrame(() => setMenuVisible(true));
     });
@@ -36,7 +74,6 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
 
   const handleClose = () => {
     setMenuVisible(false);
-    // Wait for transition to finish before unmounting
     setTimeout(() => setMenuOpen(false), 300);
   };
 
@@ -56,6 +93,15 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
       : `${baseClasses} text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white`;
   };
 
+  const getSubLinkClasses = (path: string) => {
+    const isActive = pathname === path;
+    return `block px-4 py-2.5 text-sm font-medium transition-colors ${
+      isActive
+        ? "text-primary bg-primary/10"
+        : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-900"
+    }`;
+  };
+
   const handleSectionNav = (
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string,
@@ -67,6 +113,10 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }, 350);
   };
+
+  const guidesTriggerClasses = isGuidesActive
+    ? "text-[16px] font-medium transition-all duration-300 px-4 py-2 bg-primary text-white dark:bg-white dark:text-black font-bold rounded-xl shadow-lg flex items-center gap-1.5"
+    : "text-[16px] font-medium transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white flex items-center gap-1.5";
 
   return (
     <div className="flex items-center gap-3">
@@ -81,6 +131,61 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
           <Link href="/blog" className={getLinkClasses("/blog")}>
             Blog
           </Link>
+        )}
+        {hasGuides && (
+          <div
+            ref={guidesDropdownRef}
+            className="relative"
+            onMouseEnter={() => setGuidesOpen(true)}
+            onMouseLeave={() => setGuidesOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setGuidesOpen((open) => !open)}
+              className={guidesTriggerClasses}
+              aria-expanded={guidesOpen}
+              aria-haspopup="true"
+            >
+              Guides
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 ${guidesOpen ? "rotate-180" : ""}`}
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              className={`absolute right-0 top-full pt-2 z-50 transition-all duration-200 ${
+                guidesOpen
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible -translate-y-1 pointer-events-none"
+              }`}
+            >
+              <div className="min-w-[220px] max-w-[280px] rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-lg overflow-hidden">
+                <div className={guidesListScrollClasses}>
+                  {guides.map((guide) => (
+                    <Link
+                      key={guide.slug}
+                      href={`/${guide.slug}`}
+                      className={getSubLinkClasses(`/${guide.slug}`)}
+                      onClick={() => setGuidesOpen(false)}
+                    >
+                      {guide.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         )}
         <Link
           href="/#faqs"
@@ -124,7 +229,6 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
         className="md:hidden p-2.5 rounded-xl bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200 dark:border-gray-800 transition-all duration-300"
         aria-label="Toggle menu"
       >
-        {/* Animated hamburger → X */}
         <div className="w-5 h-5 relative flex flex-col justify-center items-center">
           <span
             className={`absolute block h-0.5 w-5 bg-current rounded transition-all duration-300 ease-in-out ${
@@ -144,10 +248,9 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
         </div>
       </button>
 
-      {/* Mobile Menu — always mounted when menuOpen, visibility driven by menuVisible */}
+      {/* Mobile Menu */}
       {menuOpen && (
         <>
-          {/* Backdrop */}
           <div
             onClick={handleClose}
             className={`fixed inset-0 top-20 bg-black/20 dark:bg-black/40 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
@@ -155,10 +258,9 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
             }`}
           />
 
-          {/* Menu Panel */}
           <div
-            className={`fixed top-20 left-0 right-0 z-50 md:hidden bg-white dark:bg-gray-950 border-b border-black/10 dark:border-white/10 shadow-xl px-6 overflow-hidden transition-all duration-300 ease-in-out ${
-              menuVisible ? 'max-h-96 opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
+            className={`fixed top-20 left-0 right-0 z-50 md:hidden bg-white dark:bg-gray-950 border-b border-black/10 dark:border-white/10 shadow-xl px-6 overflow-y-auto transition-all duration-300 ease-in-out ${
+              menuVisible ? 'max-h-[80vh] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
             }`}
           >
             <div className="flex flex-col gap-4">
@@ -171,6 +273,50 @@ export default function NavbarClient({ visibleCount, postCount }: { visibleCount
                 <Link href="/blog" className={getLinkClasses("/blog")} onClick={handleClose}>
                   Blog
                 </Link>
+              )}
+              {hasGuides && (
+                <div className="flex flex-col gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setMobileGuidesOpen((open) => !open)}
+                    className={`${guidesTriggerClasses} w-full justify-between`}
+                    aria-expanded={mobileGuidesOpen}
+                  >
+                    <span>Guides</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`transition-transform duration-200 ${mobileGuidesOpen ? "rotate-180" : ""}`}
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      mobileGuidesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className={`flex flex-col gap-1 pl-2 pt-1 ${guidesListScrollClasses}`}>
+                      {guides.map((guide) => (
+                        <Link
+                          key={guide.slug}
+                          href={`/${guide.slug}`}
+                          className={getSubLinkClasses(`/${guide.slug}`)}
+                          onClick={handleClose}
+                        >
+                          {guide.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               )}
               <Link
                 href="/#faqs"

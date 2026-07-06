@@ -89,7 +89,7 @@ export default function SocialProof() {
     const activeTestimonial = testimonials[activeIndex];
 
     return (
-        <section className="bg-primary dark:bg-gray-950 py-20 px-6 lg:px-12 border-t border-gray-200 dark:border-gray-900">
+        <section id="reviews" className="bg-primary dark:bg-gray-950 py-20 px-6 lg:px-12 border-t border-gray-200 dark:border-gray-900">
             <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-white text-center dark:text-white mb-6 tracking-tight">
                     Reviews

@@ -112,6 +112,57 @@ interface Article {
 }
 
 
+interface GuideFAQ {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+type GuideHomeCTALink =
+  | "hero"
+  | "main-feature"
+  | "why-choose"
+  | "features"
+  | "how-works"
+  | "comparision-table"
+  | "reviews"
+  | "faqs"
+  | "footer";
+
+interface GuideHomeCTA {
+  id?: number;
+  title: string;
+  link: GuideHomeCTALink;
+}
+
+type AppName = "quick-paste-manager" | "expensify";
+
+interface Guide {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  content?: string;
+  faqs?: GuideFAQ[];
+  homeCTA?: GuideHomeCTA | null;
+  appName: AppName;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+interface GuidesResponse {
+  data: Guide[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
 export type {
  BlogPostsResponse,
  BlogPost,
@@ -119,6 +170,11 @@ export type {
 //  BlogDetailPage,
  TransformedBlogPost,
  FeaturedImage,
- Article
-
+ Article,
+ Guide,
+ GuideFAQ,
+ GuideHomeCTA,
+ GuideHomeCTALink,
+ GuidesResponse,
+ AppName,
 };

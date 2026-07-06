@@ -1,7 +1,6 @@
 import { Poppins, Montserrat } from "next/font/google";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Navbar from "./components/Navbar";
-import { jsonLD } from "./data/home";
 import { buildRootMetadata } from "./utils/metadata";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import './globals.css'
@@ -42,10 +41,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
-        />
+        
       </head>
       <body
         className={`${poppins.variable} ${montserrat.variable} antialiased font-sans`}

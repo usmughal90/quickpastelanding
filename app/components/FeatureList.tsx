@@ -17,7 +17,7 @@ const clipboardFeatures: FeatureBullet[] = [
 
 export default function FeatureSection() {
   return (
-    <section className="bg-transparent dark:bg-gray-950 py-16 px-6 border-t border-gray-200 dark:border-gray-900">
+    <section id="features" className="bg-transparent dark:bg-gray-950 py-16 px-6 border-t border-gray-200 dark:border-gray-900">
       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
 
         {/* Left Column: Content */}

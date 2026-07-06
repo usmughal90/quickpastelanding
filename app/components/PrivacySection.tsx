@@ -26,7 +26,7 @@ const featuredCardData: FeatureCardProps[] = [
 
 export default function PrivacySection() {
   return (
-    <section className="bg-white dark:bg-gray-950 pt-20 pb-12 px-6 lg:px-12 border-t border-gray-200 dark:border-gray-900">
+    <section id="main-feature" className="bg-white dark:bg-gray-950 pt-20 pb-12 px-6 lg:px-12 border-t border-gray-200 dark:border-gray-900">
       <div className="max-w-7xl mx-auto">
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

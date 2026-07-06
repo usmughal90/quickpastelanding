@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# AI context index: https://quickpaste.codebusterapps.com/llms.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://quickpaste.codebusterapps.com/sitemap.xml

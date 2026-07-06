@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogPostsPage, getFeatures } from '../endpoints/blog';
+import { getGuidesPage } from '../endpoints/guide';
 import NavbarClient from './NavbarClient';
 import { BlogPostsResponse } from '../types/types';
 
@@ -10,6 +11,11 @@ export default async function Navbar() {
     page: 1,
     pageSize: 1,
   });
+  const guidesResponse = await getGuidesPage({ page: 1, pageSize: 100 });
+  const guides = (guidesResponse?.data ?? []).map((guide) => ({
+    slug: guide.slug,
+    title: guide.title,
+  }));
 
   return (
     <div className="sticky top-0 z-50 w-full">
@@ -32,7 +38,11 @@ export default async function Navbar() {
         </div>
 
         {/* RIGHT SIDE: Client handles links + theme toggle */}
-        <NavbarClient visibleCount={features?.length} postCount={blogs.data.length} />
+        <NavbarClient
+          visibleCount={features?.length}
+          postCount={blogs.data.length}
+          guides={guides}
+        />
       </nav>
     </div>
   );

@@ -16,7 +16,7 @@ export default function CKContentRenderer({content} : CKProps) {
 // );
   return (
     <div
-      className="ck-content prose prose-lg "
+      className="ck-content"
       dangerouslySetInnerHTML={{
         __html: content,
       }}

@@ -16,7 +16,7 @@ const solutions: SolutionItem[] = [
 
 export default function WhyClipboardManager() {
   return (
-    <section className="bg-(--primary) dark:bg-gray-950 py-20 px-6  border-t border-gray-200 dark:border-gray-900">
+    <section id="why-choose" className="bg-(--primary) dark:bg-gray-950 py-20 px-6  border-t border-gray-200 dark:border-gray-900">
       <div className="max-w-4xl mx-auto">
         {/* Header Content */}
         <div>

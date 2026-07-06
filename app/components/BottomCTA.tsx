@@ -1,4 +1,4 @@
-import ContactForm from "@/app/components/shared/ContactForm";
+// import ContactForm from "@/app/components/shared/ContactForm";
 
 export default function BottomCTA() {
   return (
@@ -13,7 +13,7 @@ export default function BottomCTA() {
       </div>
       <div className="max-w-4xl mx-auto relative z-10 mt-12">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6  ">
-          <ContactForm />
+          {/* <ContactForm /> */}
           {/* <button className="bg-white flex items-start text-primary dark:bg-white dark:text-gray-950 px-3 py-3 rounded-xl font-semibold text-lg hover:scale-102 dark:hover:bg-gray-200 transition-all transform hover:-translate-y-1 shadow-lg">
               Download Now
             </button> */}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug } from "../../endpoints/blog";
+import { ApiFetchError } from "@/app/endpoints/errors";
 import { BlogPost, BlogPostsResponse } from "@/app/types/types";
 import ContentRenderer from "@/app/components/ContentRenderer";
 import CKContentRenderer from "@/app/components/shared/CKContentRenderer";
@@ -18,9 +19,17 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const res: BlogPostsResponse = await getBlogPostBySlug(slug);
-  const post: BlogPost | undefined = res?.data?.[0];
 
+  let res: BlogPostsResponse;
+  try {
+    res = await getBlogPostBySlug(slug);
+  } catch (error) {
+    // Transient fetch failure — fall back to empty metadata, don't imply the post is gone.
+    console.error(`generateMetadata: failed to fetch slug "${slug}".`, error);
+    return {};
+  }
+
+  const post: BlogPost | undefined = res?.data?.[0];
   if (!post) return {};
 
   const seo = post.seo;
@@ -28,31 +37,20 @@ export async function generateMetadata({
   const description = seo?.ogDescription || post.shortDescription || "";
   const canonical = seo?.canonicalUrl || buildPublicSiteUrl(`/blog/${slug}`);
 
-
   const ogImageUrl = seo?.ogImage?.url || post.featuredImage?.url;
   const ogImage = ogImageUrl ? buildImageUrl(ogImageUrl) : null;
 
   return {
     title: title ?? "Blog",
     description: description ?? "",
-    alternates: {
-      canonical,
-    },
-
+    alternates: { canonical },
     openGraph: {
       title,
       description,
       url: canonical,
       type: "article",
       images: ogImage
-        ? [
-            {
-              url: ogImage,
-              width: 1200,
-              height: 630,
-              alt: title,
-            },
-          ]
+        ? [{ url: ogImage, width: 1200, height: 630, alt: title }]
         : [],
     },
     twitter: {
@@ -66,9 +64,26 @@ export async function generateMetadata({
 
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const res: BlogPostsResponse = await getBlogPostBySlug(slug);
+
+  let res: BlogPostsResponse;
+  try {
+    res = await getBlogPostBySlug(slug);
+  } catch (error) {
+    // Fetch genuinely failed (timeout / network / 5xx from the CMS).
+    // Do NOT call notFound() here — that turns a transient backend hiccup
+    // into a permanent-looking 404 for users and crawlers, on a URL our
+    // own sitemap lists as valid. Rethrow so Next renders the nearest
+    // error boundary (error.tsx) as a 500, which search engines treat as
+    // "try again later" instead of "this is gone."
+    console.error(`BlogDetailPage: failed to fetch slug "${slug}".`, error);
+    throw error instanceof ApiFetchError
+      ? error
+      : new ApiFetchError("Unexpected error fetching blog post.", error);
+  }
+
   const post: BlogPost | undefined = res?.data?.[0];
 
+  // Fetch succeeded and genuinely found nothing — this is a real 404.
   if (!post) notFound();
 
   const title = post.title ?? "";
@@ -83,13 +98,8 @@ export default async function BlogDetailPage({ params }: PageProps) {
     : "";
 
   const imageUrl = post.featuredImage?.url ?? "";
-  const heroAlt =
-    post.featuredImage?.alternativeText ??
-    post.featuredImage?.alternativeText ??
-    title;
-
+  const heroAlt = post.featuredImage?.alternativeText ?? title;
   const heroSrc = imageUrl ? buildImageUrl(imageUrl) : null;
-    
 
   const author = post.author ?? "";
   const ckContent = typeof post.content2 === "string" ? post.content2 : "";
@@ -111,16 +121,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
             Home
           </Link>
           <span className="text-zinc-400">/</span>
-          <Link
-            href="/blog"
-            className="text-(--color-primary)  hover:underline"
-          >
+          <Link href="/blog" className="text-(--color-primary) hover:underline">
             Blog
           </Link>
           <span className="text-zinc-400">/</span>
-          <span className="text-(--color-primary) hover:underline">
-            {title}
-          </span>
+          <span className="text-(--color-primary) hover:underline">{title}</span>
         </nav>
 
         <header className="mt-6">

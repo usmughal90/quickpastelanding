@@ -8,24 +8,29 @@ import BottomCTA from "./components/BottomCTA";
 import Summary from "./components/Summary";
 import HowItWorks from "./components/HowItWorks";
 import FeatureSection from "./components/FeatureList";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import { jsonLD } from "./data/home";
 
 export default function Home() {
   return (
-    <main>
-      
-      <Hero />
-      <PrivacySection />
-      <Summary /> 
-      <ProblemSolution />
-      <FeatureSection/>
-      <HowItWorks />
-      <ComparisonTable />
-      <SocialProof />
-      <FAQ />
-      <BottomCTA />
-      <Footer />
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
+      <main>
+        <Hero />
+        <PrivacySection />
+        <Summary />
+        <ProblemSolution />
+        <FeatureSection />
+        <HowItWorks />
+        <ComparisonTable />
+        <SocialProof />
+        <FAQ />
+        <BottomCTA />
+        <Footer />
+      </main>
+    </>
   );
 }

@@ -29,3 +29,17 @@ export function buildPublicSiteUrl(path: string): string {
   const pathname = path.startsWith("/") ? path : `/${path}`;
   return new URL(pathname, `${base}/`).toString();
 }
+
+/** Hostname from the configured public site URL (www or apex). */
+export function getPreferredSiteHostname(): string {
+  return new URL(getPublicSiteUrl()).hostname;
+}
+
+/** The other www/apex variant of the preferred hostname, if applicable. */
+export function getAlternateSiteHostname(): string | null {
+  const preferred = getPreferredSiteHostname();
+  if (preferred.startsWith("www.")) {
+    return preferred.slice(4);
+  }
+  return `www.${preferred}`;
+}
