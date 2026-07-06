@@ -16,6 +16,7 @@ const BlogItem: React.FC<BlogItemProps> = ({
   featuredImage,
 }) => {
   const imageSrc = featuredImage?.url ? buildImageUrl(featuredImage.url) : null;
+  console.log(imageSrc);
 
   return (
     <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 py-12 md:py-16 border-b border-gray-200 dark:border-gray-800 last:border-none group cursor-pointer">

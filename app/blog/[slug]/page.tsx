@@ -100,6 +100,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const imageUrl = post.featuredImage?.url ?? "";
   const heroAlt = post.featuredImage?.alternativeText ?? title;
   const heroSrc = imageUrl ? buildImageUrl(imageUrl) : null;
+  console.log(heroSrc);
 
   const author = post.author ?? "";
   const ckContent = typeof post.content2 === "string" ? post.content2 : "";
